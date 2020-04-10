@@ -1,0 +1,26 @@
+version: "3.7"
+
+services:
+  nginx:
+    build:
+      context: docker/nginx
+    ports:
+      - "127.0.0.1:7001:22809"
+    volumes:
+      - ./:/var/www
+  fpm:
+    build:
+      context: docker/fpm
+    working_dir: /var/www
+    volumes:
+      - ./:/var/www
+    expose:
+      - "9002"
+    depends_on:
+      - mariadb
+
+  mariadb:
+    image: mariadb:latest
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: 1
+      MYSQL_DATABASE: laravel
