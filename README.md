@@ -6,11 +6,11 @@
 - Docker
 
 ## Setup
-###1. Add Repository
+### Add Repository
         
     git clone git@github.com:coliveira-ptc/laravel-nginx-fpm-mariadb-docker.git NameOfTheProject
 
-###2. Change the name of the database, in these files:
+### Change the name of the database, in these files:
 docker-compose.yml
 
     MYSQL_DATABASE: laravel-nginx-fpm-mariadb-docker
@@ -19,10 +19,10 @@ docker-compose.yml
     
     DB_DATABASE=laravel-nginx-fpm-mariadb-docker
 
-##3. Run docker-compose
+### Run docker-compose
     docker-compose build && docker-compose up -d
 
-##4. Give some permissions
+### Give some permissions
 sudo chgrp -R www-data storage bootstrap/cache
 sudo chmod -R ug+rwx storage bootstrap/cache
 
